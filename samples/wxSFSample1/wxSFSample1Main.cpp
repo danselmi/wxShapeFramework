@@ -320,5 +320,7 @@ void wxSFSample1Frame::OnShapeChildDropEvent(wxSFShapeChildDropEvent& event)
 
 void wxSFSample1Frame::OnLineFinished(wxSFShapeEvent& event)
 {
-	event.GetShape()->AddStyle( wxSFShapeBase::sfsEMIT_EVENTS );
+	if ( event.GetShape() ) {
+		event.GetShape()->AddStyle( wxSFShapeBase::sfsEMIT_EVENTS );
+	}
 }
