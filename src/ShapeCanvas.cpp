@@ -888,6 +888,7 @@ void wxSFShapeCanvas::OnLeftDown(wxMouseEvent& event)
 									m_pManager->RemoveShape(m_pNewLineShape);
 									m_nWorkingMode = modeREADY;
 									m_pNewLineShape = NULL;
+									return;
 								}
 								break;
 							case pfsFAILED_AND_CONTINUE_EDIT:
