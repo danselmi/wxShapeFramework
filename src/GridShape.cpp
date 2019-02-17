@@ -80,7 +80,7 @@ void wxSFGridShape::SetDimensions(int rows, int cols)
     wxASSERT(rows);
     wxASSERT(cols);
 
-    if( !(rows * cols) ) return;
+    if( rows * cols == 0 ) return;
 
     m_nRows = rows;
     m_nCols = cols;
