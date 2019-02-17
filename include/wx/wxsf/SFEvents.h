@@ -53,6 +53,7 @@ BEGIN_DECLARE_EVENT_TYPES()
 	DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_SF, wxEVT_SF_LINE_BEFORE_DONE, 7789)
 	DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_SF, wxEVT_SF_LINE_HANDLE_ADD, 7790)
 	DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_SF, wxEVT_SF_LINE_HANDLE_REMOVE, 7791)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_SF, wxEVT_SF_SHAPE_SIZE_CHANGED, 7792)
 END_DECLARE_EVENT_TYPES()
 
 typedef void (wxEvtHandler::*wxSFShapeEventFunction)(wxSFShapeEvent&);
@@ -295,7 +296,16 @@ typedef void (wxEvtHandler::*wxSFShapeChildDropEventFunction)(wxSFShapeChildDrop
         (wxObjectEventFunction)(wxEventFunction) wxStaticCastEvent( wxSFShapeHandleEventFunction, &fn ), \
         (wxObject *) NULL \
     ),
-	
+
+/*! \brief Event table macro mapping event wxEVT_SF_SHAPE_SIZE_CHANGED. This event occures
+ * when the shape's size has chansged (sfsEMIT_EVENTS shape style must be in use). */
+#define EVT_SF_SHAPE_SIZE_CHANGED(id, fn) \
+    DECLARE_EVENT_TABLE_ENTRY( \
+        wxEVT_SF_SHAPE_SIZE_CHANGED, id, wxID_ANY, \
+        (wxObjectEventFunction)(wxEventFunction) wxStaticCastEvent( wxSFShapeEventFunction, &fn ), \
+        (wxObject *) NULL \
+    ),
+
 /*!
  * \brief Class encapsulates generic wxSF shape's event.
  */

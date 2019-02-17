@@ -40,6 +40,7 @@ DEFINE_EVENT_TYPE( wxEVT_SF_SHAPE_CHILD_DROP );
 DEFINE_EVENT_TYPE( wxEVT_SF_LINE_BEFORE_DONE );
 DEFINE_EVENT_TYPE( wxEVT_SF_LINE_HANDLE_ADD );
 DEFINE_EVENT_TYPE( wxEVT_SF_LINE_HANDLE_REMOVE );
+DEFINE_EVENT_TYPE( wxEVT_SF_SHAPE_SIZE_CHANGED );
 
 //----------------------------------------------------------------------------------//
 // wxSFShapeEvent class

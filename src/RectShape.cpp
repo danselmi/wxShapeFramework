@@ -17,6 +17,7 @@
 #include "wx/wxsf/RectShape.h"
 #include "wx/wxsf/ShapeCanvas.h"
 #include "wx/wxsf/CommonFcn.h"
+#include "wx/wxsf/SFEvents.h"
 
 // TODO: wxSFShapeBase: Implement LockAspectRation() function
 
@@ -121,6 +122,12 @@ void wxSFRectShape::FitToChildren()
 			shpBB.Union(chBB);
 			MoveTo(shpBB.GetPosition().x, shpBB.GetPosition().y);
 			m_nRectSize = wxRealPoint(shpBB.GetSize().x, shpBB.GetSize().y);
+            if( this->ContainsStyle(sfsEMIT_EVENTS) )
+            {
+                wxSFShapeEvent evt( wxEVT_SF_SHAPE_SIZE_CHANGED, this->GetId() );
+                evt.SetShape( this );
+                GetParentCanvas()->GetEventHandler()->ProcessEvent( evt );
+            }
 
 			// move its "1st level" children if neccessary
 			if((dx < 0) || (dy < 0))
