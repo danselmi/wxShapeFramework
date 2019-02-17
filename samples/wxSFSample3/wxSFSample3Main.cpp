@@ -163,7 +163,7 @@ void wxSFSample3Frame::OnTextChanged(wxSFShapeTextEvent& event)
 		// update the text shape and its parent(s)
 		pText->Update();
 		// diplay some info...
-		wxLogMessage(wxString::Format(wxT("New text of the star with ID %d is : '%s'"), pText->GetParentShape()->GetId(), event.GetText().c_str()));
+		wxLogMessage(wxString::Format(wxT("New text of the star with ID %ld is : '%s'"), pText->GetParentShape()->GetId(), event.GetText().c_str()));
     }
 }
 
