@@ -40,8 +40,8 @@ goto IdeSelector
 cls
 echo -----= 
 Echo -----= Code::Blocks Options
-echo -----= 1) --target cb-gcc --wx-version 28 --unicode --with-wx-shared --shared
-echo -----= 2) --target cb-gcc --wx-version 28 --unicode --static-runtime
+echo -----= 1) --target cb-gcc --wx-version 31 --unicode --with-wx-shared --shared
+echo -----= 2) --target cb-gcc --wx-version 31 --unicode --static-runtime
 echo -----=
 echo -----= b) Back
 echo -----= e) Exit
@@ -59,20 +59,20 @@ goto CbSelected
 :CbSelected1
 cls
 echo -----=
-echo -----= Option "--target cb-gcc --wx-version 28 --unicode --with-wx-shared --shared" Selected
+echo -----= Option "--target cb-gcc --wx-version 31 --unicode --with-wx-shared --shared" Selected
 echo -----= Firing up the generator!
 echo ------------------------------------
-premake\premake-win32.exe --target cb-gcc --wx-version 28 --unicode --with-wx-shared --shared
+premake\premake-win32.exe --target cb-gcc --wx-version 31 --unicode --with-wx-shared --shared
 echo ------------------------------------
 echo -----= Done!
 goto Exit
 :CbSelected2
 cls
 echo -----=
-echo -----= Option "--target cb-gcc --wx-version 28 --unicode --static-runtime" Selected
+echo -----= Option "--target cb-gcc --wx-version 31 --unicode --static-runtime" Selected
 echo -----= Firing up the generator!
 echo -----===============================
-premake\premake-win32.exe --target cb-gcc --wx-version 28 --unicode --static-runtime
+premake\premake-win32.exe --target cb-gcc --wx-version 31 --unicode --static-runtime
 echo -----===============================
 echo -----= Done!
 goto Exit
