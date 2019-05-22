@@ -48,7 +48,8 @@ cStarShape::cStarShape(const cStarShape& obj)
 	// clone source child text object...
 	m_pText = (wxSFEditTextShape*)obj.m_pText->Clone();
 	// ... and append it to this shapes as its child
-	if( m_pText ) SF_ADD_COMPONENT( m_pText, wxT("title") );
+	if( m_pText )
+        SF_ADD_COMPONENT( m_pText, wxT("title") );
 }
 
 cStarShape::~cStarShape()
@@ -94,7 +95,7 @@ void cStarShape::Initialize()
         // components of composite shapes created at runtime in parent shape's
         // constructor cannot be fully serialized (it means created by
 		// the serializer) so it is important to disable their standard serialization
-        // but they can be still serialized as the parent shape's properties 
+        // but they can be still serialized as the parent shape's properties
 		// in the standard way by the following macro:
 		SF_ADD_COMPONENT( m_pText, wxT("title") );
     }

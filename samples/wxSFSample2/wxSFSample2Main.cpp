@@ -56,7 +56,7 @@ wxSFSample2Frame::wxSFSample2Frame(wxFrame *frame, const wxString& title)
     wxMenu* fileMenu = new wxMenu(wxT(""));
     fileMenu->Append(idMenuQuit, wxT("&Quit\tAlt-F4"), wxT("Quit the application"));
     mbar->Append(fileMenu, wxT("&File"));
-	
+
 	m_menuLog = new wxMenu();
 	m_menuLog->AppendCheckItem(idMenuLogMouseEvent, wxT("Log &mouse handlers"));
 	m_menuLog->AppendCheckItem(idMenuLogHandleEvent, wxT("Log &handle handlers"));
@@ -86,13 +86,13 @@ wxSFSample2Frame::wxSFSample2Frame(wxFrame *frame, const wxString& title)
     m_pCanvas = new SampleCanvas(&m_Manager, this);
 
 	mainSizer->Add( m_pCanvas, 1, wxEXPAND, 0 );
-	
+
 	m_textLog = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,150 ), wxTE_MULTILINE );
-	m_textLog->SetFont( wxFont( 8, 74, 90, 90, false, wxT("Sans") ) );
+	m_textLog->SetFont( wxFont( 8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Sans") ) );
 	m_textLog->SetMinSize( wxSize( -1,150 ) );
-	
+
 	mainSizer->Add( m_textLog, 0, wxEXPAND, 0 );
-	
+
 	SetSizer( mainSizer );
 	Layout();
 
@@ -141,7 +141,7 @@ void wxSFSample2Frame::OnAbout(wxCommandEvent& WXUNUSED(event))
 void wxSFSample2Frame::Log(LOGTYPE logtype, const wxString& msg)
 {
 	wxSFSample2Frame *mainFrame = (wxSFSample2Frame*)wxGetApp().GetTopWindow();
-	
+
 	if( mainFrame->m_menuLog->IsChecked( (int)logtype ) )
 	{
 		mainFrame->m_textLog->AppendText( msg );

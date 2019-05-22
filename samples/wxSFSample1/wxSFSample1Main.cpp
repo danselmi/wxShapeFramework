@@ -48,7 +48,7 @@ wxSFSample1Frame::wxSFSample1Frame(wxFrame *frame, const wxString& title)
     : wxFrame(frame, -1, title)
 {
     SetSize(800, 600);
-	
+
 	// initialize event types
 	m_mapEventTypeInfo[ wxEVT_SF_SHAPE_LEFT_DOWN ] = wxT("Shape was clicked by LMB (wxEVT_SF_SHAPE_LEFT_DOWN )");
 	m_mapEventTypeInfo[ wxEVT_SF_SHAPE_LEFT_DCLICK ] = wxT("Shape was double-clicked by LMB (wxEVT_SF_SHAPE_LEFT_DOWN )");
@@ -74,7 +74,7 @@ wxSFSample1Frame::wxSFSample1Frame(wxFrame *frame, const wxString& title)
     wxMenu* fileMenu = new wxMenu(wxT(""));
     fileMenu->Append(idMenuQuit, wxT("&Quit\tAlt-F4"), wxT("Quit the application"));
     mbar->Append(fileMenu, wxT("&File"));
-	
+
 	wxMenu *logMenu = new wxMenu();
 	logMenu->AppendCheckItem(idMenuLogMouseEvent, wxT("Log &mouse events"));
 	logMenu->AppendCheckItem(idMenuLogHandleEvent, wxT("Log &handle events"));
@@ -110,7 +110,7 @@ wxSFSample1Frame::wxSFSample1Frame(wxFrame *frame, const wxString& title)
     // connect (some) shape canvas events
     m_pCanvas->Connect(wxEVT_LEFT_DOWN, wxMouseEventHandler(wxSFSample1Frame::OnLeftClickCanvas), NULL, this);
     m_pCanvas->Connect(wxEVT_RIGHT_DOWN, wxMouseEventHandler(wxSFSample1Frame::OnRightClickCanvas), NULL, this);
-	
+
 	// connect (some) shape events (for full list of available shape/shape canvas events see wxSF's reference documentation).
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_LEFT_DOWN, wxSFShapeMouseEventHandler(wxSFSample1Frame::OnShapeMouseEvent), NULL, this);
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_LEFT_DCLICK, wxSFShapeMouseEventHandler(wxSFSample1Frame::OnShapeMouseEvent), NULL, this);
@@ -119,31 +119,31 @@ wxSFSample1Frame::wxSFSample1Frame(wxFrame *frame, const wxString& title)
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_DRAG_BEGIN, wxSFShapeMouseEventHandler(wxSFSample1Frame::OnShapeMouseEvent), NULL, this);
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_DRAG, wxSFShapeMouseEventHandler(wxSFSample1Frame::OnShapeMouseEvent), NULL, this);
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_DRAG_END, wxSFShapeMouseEventHandler(wxSFSample1Frame::OnShapeMouseEvent), NULL, this);
-	
+
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_MOUSE_ENTER, wxSFShapeMouseEventHandler(wxSFSample1Frame::OnShapeMouseEvent), NULL, this);
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_MOUSE_OVER, wxSFShapeMouseEventHandler(wxSFSample1Frame::OnShapeMouseEvent), NULL, this);
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_MOUSE_LEAVE, wxSFShapeMouseEventHandler(wxSFSample1Frame::OnShapeMouseEvent), NULL, this);
-	
+
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_HANDLE_BEGIN, wxSFShapeHandleEventHandler(wxSFSample1Frame::OnShapeHandleEvent), NULL, this);
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_HANDLE, wxSFShapeHandleEventHandler(wxSFSample1Frame::OnShapeHandleEvent), NULL, this);
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_HANDLE_END, wxSFShapeHandleEventHandler(wxSFSample1Frame::OnShapeHandleEvent), NULL, this);
 	m_pCanvas->Connect(wxEVT_SF_LINE_HANDLE_ADD, wxSFShapeHandleEventHandler(wxSFSample1Frame::OnShapeHandleEvent), NULL, this);
 	m_pCanvas->Connect(wxEVT_SF_LINE_HANDLE_REMOVE, wxSFShapeHandleEventHandler(wxSFSample1Frame::OnShapeHandleEvent), NULL, this);
-	
+
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_KEYDOWN, wxSFShapeKeyEventHandler(wxSFSample1Frame::OnShapeKeyEvent), NULL, this);
-	
+
 	m_pCanvas->Connect(wxEVT_SF_SHAPE_CHILD_DROP, wxSFShapeChildDropEventHandler(wxSFSample1Frame::OnShapeChildDropEvent), NULL, this);
-	
+
 	m_pCanvas->Connect(wxEVT_SF_LINE_DONE, wxSFShapeEventHandler(wxSFSample1Frame::OnLineFinished), NULL, this);
-	
+
 	mainSizer->Add( m_pCanvas, 1, wxEXPAND, 0 );
-	
+
 	m_textLog = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,150 ), wxTE_MULTILINE );
-	m_textLog->SetFont( wxFont( 8, 74, 90, 90, false, wxT("Sans") ) );
+	m_textLog->SetFont( wxFont( 8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Sans") ) );
 	m_textLog->SetMinSize( wxSize( -1,150 ) );
-	
+
 	mainSizer->Add( m_textLog, 0, wxEXPAND, 0 );
-	
+
 	SetSizer( mainSizer );
 	Layout();
 
@@ -243,49 +243,49 @@ void wxSFSample1Frame::OnShapeHandleEvent(wxSFShapeHandleEvent& event)
 	if( GetMenuBar()->GetMenu(1)->IsChecked( idMenuLogHandleEvent ) )
 	{
 		wxString sHndType;
-		
+
 		switch( event.GetHandle().GetType() )
 		{
 			case wxSFShapeHandle::hndLEFTTOP:
 				sHndType = wxT("left-top");
 				break;
-				
+
 			case wxSFShapeHandle::hndTOP:
 				sHndType = wxT("top");
 				break;
-				
+
 			case wxSFShapeHandle::hndRIGHTTOP:
 				sHndType = wxT("right-top");
 				break;
-				
+
 			case wxSFShapeHandle::hndLEFT:
 				sHndType = wxT("left");
 				break;
-				
+
 			case wxSFShapeHandle::hndRIGHT:
 				sHndType = wxT("right");
 				break;
-				
+
 			case wxSFShapeHandle::hndLEFTBOTTOM:
 				sHndType = wxT("left-bottom");
 				break;
-				
+
 			case wxSFShapeHandle::hndBOTTOM:
 				sHndType = wxT("bottom");
 				break;
-				
+
 			case wxSFShapeHandle::hndRIGHTBOTTOM:
 				sHndType = wxT("right-bottom");
 				break;
-				
+
 			case wxSFShapeHandle::hndLINECTRL:
 				sHndType = wxT("line-control");
 				break;
-				
+
 			default:
 				break;
 		}
-		
+
 		m_textLog->AppendText( wxString::Format( wxT("%s, Shape ID: %d, Handle type: %d (%s), Delta: %d,%d\n"),
 												m_mapEventTypeInfo[event.GetEventType()].c_str(),
 												event.GetId(),

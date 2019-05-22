@@ -62,11 +62,11 @@ class WXDLLIMPEXP_SF wxSFShapeBase;
 
 /*! \brief Add child shape component created by the parent shape (not by the serializer) to this parent shape.
  * Serializable properties of added component will be serialized as the parent shape's properties.
- */ 
+ */
 #define SF_ADD_COMPONENT(comp, name) \
-	comp->EnableSerialization( false );	\
+	{comp->EnableSerialization( false );	\
 	this->AddProperty( new xsProperty( &comp, wxT("serializabledynamicnocreate"), name ) );	\
-	this->AddChild( comp );	\
+	this->AddChild( comp );}\
 
 WX_DECLARE_LIST_WITH_DECL(wxSFShapeBase, ShapeList, class WXDLLIMPEXP_SF);
 
@@ -284,8 +284,8 @@ public:
      * \param type Type of searched child shapes (NULL for any type)
      * \param children List of child shapes
      * \param recursive Set this flag TRUE if also children of children of ... should be found (also sfRECURSIVE a sfNORECURSIVE constants can be used).
-	 * \param mode Search mode (has sense only for recursive search) 
-	 * \sa xsSerializable::SEARCHMODE 
+	 * \param mode Search mode (has sense only for recursive search)
+	 * \sa xsSerializable::SEARCHMODE
      */
 	void GetChildShapes(wxClassInfo *type, ShapeList& children, bool recursive = false, xsSerializable::SEARCHMODE mode = xsSerializable::searchBFS);
 	/*!
@@ -301,7 +301,7 @@ public:
 	void GetNeighbours(ShapeList& neighbours, wxClassInfo* shapeInfo, CONNECTMODE condir, bool direct = true);
 	/*!
 	 * \brief Get list of connections assigned to this shape.
-	 * 
+	 *
 	 * Note: For proper functionality the shape must be managed by a diagram manager.
 	 * \param shapeInfo Line object type
 	 * \param mode Search mode
@@ -702,7 +702,7 @@ public:
 	 * \sa wxSFShapeHandle
 	 */
 	void RemoveHandle(wxSFShapeHandle::HANDLETYPE type, long id = -1);
-	
+
 	/*!
 	 * \brief Get reference to connection points list.
 	 * \return Constant reference to connection points list
@@ -1004,7 +1004,7 @@ protected:
 	 * \sa wxSFShapeCanvas::InvalidateRect(), wxSFShapeCanvas::RefreshInvalidatedRect()
      */
 	void Refresh(const wxRect& rct, bool delayed = false);
-	
+
 	/**
 	 * \brief Get absolute position of the shape parent.
 	 * \return Absolute position of the shape parent if exists, otherwise 0,0
@@ -1024,7 +1024,7 @@ private:
 
 	/*! \brief Initialize serializable properties. */
 	void MarkSerializableDataMembers();
-	
+
 	/*!
 	 * \brief Auxiliary function called by GetNeighbours function.
 	 * \param neighbours List of neighbour shapes
